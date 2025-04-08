@@ -111,19 +111,21 @@ const Categories = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#E9EFEC] py-14 px-6 pt-52">
+    <div className="min-h-screen bg-[#f5f5f7] text-[#212529] py-10 md:py-14 px-4 md:px-6 pt-16 sm:pt-20 md:pt-24">
       {categories.map((category) => (
         <div
           key={category.id}
           id={`section-${category.id}`}
-          className="category mb-10 scroll-mt-20"
+          className="category mb-8 md:mb-10 scroll-mt-20 mt-8 sm:mt-12"
         >
-          <h2 className="text-3xl font-bold mb-4 p-3 ">{category.name}</h2>
+          <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 p-2 md:p-3">
+            {category.name}
+          </h2>
 
-          <div className="personal text-left text-lg">
+          <div className="personal text-left text-base md:text-lg">
             {category.id === 1 && (
               <>
-                <p className="mb-4 ">
+                <p className="mb-3 md:mb-4">
                   This is a personal note about my journey as a software
                   engineering student and lifestyle blogger. Growing up, I
                   always had a fascination with technology. I would spend hours
@@ -131,7 +133,7 @@ const Categories = () => {
                   worked. This curiosity eventually led me to pursue a degree in
                   software engineering.
                 </p>
-                <p className="mb-4">
+                <p className="mb-3 md:mb-4">
                   The path hasn't been easy. There have been moments of
                   self-doubt and challenges that made me question my abilities.
                   From struggling with complex coding concepts to balancing my
@@ -139,7 +141,7 @@ const Categories = () => {
                   obstacles. But each challenge has taught me valuable lessons
                   about resilience and perseverance.
                 </p>
-                <p className="mb-4">
+                <p className="mb-3 md:mb-4">
                   One of the most rewarding experiences has been collaborating
                   with peers on projects. Working together to solve problems and
                   build applications has not only enhanced my technical skills
@@ -147,7 +149,7 @@ const Categories = () => {
                   the importance of teamwork and communication in the tech
                   industry.
                 </p>
-                <p className="mb-4">
+                <p className="mb-3 md:mb-4">
                   Beyond academics, I've also discovered the importance of
                   self-care and maintaining a balanced lifestyle. As a
                   faith-driven individual, I find strength and motivation in my
@@ -156,14 +158,14 @@ const Categories = () => {
                   loved ones, I've realized that taking care of my mental health
                   is crucial for my success.
                 </p>
-                <p className="mb-4">
+                <p className="mb-3 md:mb-4">
                   As I continue this journey, I'm excited to share my
                   experiences, insights, and the lessons I learn along the way.
                   This blog is a space for reflection, growth, and connection. I
                   hope to inspire others who may be on a similar path and foster
                   a community of support and encouragement.
                 </p>
-                <p className="font-semibold mt-5 text-center text-xl">
+                <p className="font-semibold mt-4 md:mt-5 text-center text-lg md:text-xl">
                   "Every step I take is a part of my story, and I'm grateful for
                   the journey."
                 </p>
@@ -171,17 +173,17 @@ const Categories = () => {
             )}
           </div>
 
-          <div className="learning text-left text-lg">
+          <div className="learning text-left text-base md:text-lg">
             {category.id === 2 && (
               <>
-                <p className="mb-4">
+                <p className="mb-3 md:mb-4">
                   This is a collection of learning resources related to my
                   personal journey in software engineering. As I navigate
                   through my studies, I've discovered numerous tools and
                   resources that have significantly enhanced my understanding of
                   various concepts.
                 </p>
-                <p className="mb-4">
+                <p className="mb-3 md:mb-4">
                   One of the first resources I turned to was online learning
                   platforms like <strong>Coursera</strong> and{" "}
                   <strong>edX</strong>. These platforms offer a wide range of
@@ -190,7 +192,7 @@ const Categories = () => {
                   well as specialized topics like web development and data
                   science.
                 </p>
-                <p className="mb-4">
+                <p className="mb-3 md:mb-4">
                   Additionally, I'm a huge fan of <strong>YouTube</strong>{" "}
                   tutorials. Channels like <strong>Traversy Media</strong> and{" "}
                   <strong>Academind </strong>
@@ -199,7 +201,7 @@ const Categories = () => {
                   to these videos when I need a refresher or a different
                   perspective on a subject.
                 </p>
-                <p className="mb-4">
+                <p className="mb-3 md:mb-4">
                   I also believe in the power of community learning.
                   Participating in coding boot camps and local meetups has
                   allowed me to connect with fellow learners and professionals
@@ -207,20 +209,20 @@ const Categories = () => {
                   with valuable insights but have also motivated me to push my
                   boundaries and challenge myself.
                 </p>
-                <p className="mb-4">
+                <p className="mb-3 md:mb-4">
                   To keep my skills sharp, I've started working on personal
                   projects and contributing to open-source initiatives on
                   platforms like <strong>GitHub</strong>. This hands-on
                   experience has been invaluable in applying what I've learned
                   and understanding real-world applications of coding concepts.
                 </p>
-                <p className="mb-4">
+                <p className="mb-3 md:mb-4">
                   As I continue to grow, I'm excited to share more resources
                   that I discover along the way. Whether it's a new book, a
                   helpful website, or a coding challenge, I believe that sharing
                   knowledge is essential for our collective growth.
                 </p>
-                <p className="font-semibold mt-5 text-xl text-center">
+                <p className="font-semibold mt-4 md:mt-5 text-lg md:text-xl text-center">
                   "Learning is a lifelong journey, and I'm grateful for every
                   resource and experience that shapes my path."
                 </p>
@@ -229,12 +231,14 @@ const Categories = () => {
           </div>
 
           {category.id === 3 && (
-            <div className="projects-section mt-12">
-              <p className="mb-4 text-lg">
+            <div className="projects-section mt-8 md:mt-12">
+              <p className="mb-4 text-base md:text-lg">
                 This is a list of projects I've worked on during my personal
                 journey.
               </p>
-              <ProjectsSlider />
+              <div className="overflow-x-auto">
+                <ProjectsSlider />
+              </div>
             </div>
           )}
         </div>

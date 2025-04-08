@@ -35,140 +35,135 @@ const Header = () => {
   const toggleSidebar = () => {
     setIsSidebarOpen((prev) => !prev);
   };
+
   const SocialIcons = () => {
     return (
-      <div className="icons flex space-x-3">
+      <div className="icons flex space-x-2 sm:space-x-3 text-red-800">
         <a
-          href="https://github.com/yourgithub"
+          href="https://github.com/nabi0l"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <FaGithub className="h-6 w-6" />
+          <FaGithub className="h-5 w-5 sm:h-6 sm:w-6" />
         </a>
-        <a
-          href="https://t.me/yourtelegram"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaTelegram className="h-6 w-6" />
+        <a href="https://t.me/nabi0l" target="_blank" rel="noopener noreferrer">
+          <FaTelegram className="h-5 w-5 sm:h-6 sm:w-6" />
         </a>
         <a
           href="https://www.linkedin.com/in/yourlinkedin"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <FaLinkedin className="h-6 w-6" />
+          <FaLinkedin className="h-5 w-5 sm:h-6 sm:w-6" />
         </a>
         <a
           href="https://www.instagram.com/yourinstagram"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <FaInstagram className="h-6 w-6" />
+          <FaInstagram className="h-5 w-5 sm:h-6 sm:w-6" />
         </a>
       </div>
     );
   };
 
   return (
-    <div
-      className="fixed top-0 left-0 right-0 z-50  shadow-md"
-      style={{
-        background: "#E9EFEC",
-      }}
-    >
-      <div className="upper flex justify-between items-center mx-10 py-2">
-        <div className="left flex items-center space-x-4 cursor-pointer">
-          <p className="text-lg font-semibold">Write</p>
-          <p className="text-lg font-semibold">Sign in</p>
-        </div>
-        <h1 className="text-3xl font-bold p-5">From Variables to Vision</h1>
-        <div className="right ">
-          <SocialIcons />
-        </div>
-      </div>
-
-      <div
-        className="flex justify-between items-center text-white p-4 relative"
-        style={{
-          background: "#C4DAD2",
-        }}
-      >
-        <nav className="flex items-center justify-between w-full">
-          <div className="flex justify-start">
-            <FaBars
-              className="h-6 w-6 cursor-pointer"
-              onClick={toggleSidebar}
-            />
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#F5F5F7] text-[#212529] shadow-md">
+      <div className="container mx-auto">
+        <div className="flex justify-between items-center py-2 sm:py-4 px-3 sm:px-4 md:px-6">
+          <div className="flex items-center space-x-2 sm:space-x-4">
+            <p className="text-sm sm:text-lg font-semibold hover:text-red-800 cursor-pointer">
+              Write
+            </p>
+            <p className="text-sm sm:text-lg font-semibold hover:text-red-800 cursor-pointer">
+              Sign in
+            </p>
           </div>
-          <ul className="flex space-x-8 p-3 text-xl">
-            <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  isActive ? "text-blue-500" : "text-gray-500"
-                }
-              >
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/about"
-                className={({ isActive }) =>
-                  isActive ? "text-blue-500" : "text-gray-500"
-                }
-              >
-                About
-              </NavLink>
-            </li>
-            <li className="relative group">
-              <div className="flex items-center cursor-pointer">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">
+            From Variables to Vision
+          </h1>
+          <div className="flex items-center">
+            <SocialIcons />
+          </div>
+        </div>
+
+        <nav className="border-t border-gray-200">
+          <div className="flex justify-between items-center py-2 sm:py-3 px-3 sm:px-4 md:px-6">
+            <div className="flex items-center">
+              <FaBars
+                className="h-5 w-5 sm:h-6 sm:w-6 cursor-pointer text-[#212529]"
+                onClick={toggleSidebar}
+              />
+            </div>
+            <ul className="flex space-x-3 sm:space-x-6 md:space-x-8 text-sm sm:text-base">
+              <li>
                 <NavLink
-                  to="/categories"
+                  to="/"
                   className={({ isActive }) =>
-                    isActive ? "text-blue-500 mr-1" : "text-gray-500 mr-1"
+                    isActive ? "text-red-800" : "text-[#212529]"
                   }
                 >
-                  Categories
+                  Home
                 </NavLink>
-                <FaChevronDown
-                  className="ml-1 cursor-pointer"
-                  onClick={toggleDropdown}
-                />
-              </div>
-              {isDropdownOpen && (
-                <div className="absolute bg-white text-black p-2 w-[auto] rounded shadow-lg z-10">
-                  <ul className="space-y-2">
-                    {Categories.map((category) => (
-                      <li key={category.id}>
-                        <button
-                          onClick={() => handleCategoryClick(category.id)}
-                          className="hover:text-blue-500 transition-colors"
-                        >
-                          {category.name}
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
+              </li>
+              <li>
+                <NavLink
+                  to="/about"
+                  className={({ isActive }) =>
+                    isActive ? "text-red-800" : "text-[#212529]"
+                  }
+                >
+                  About
+                </NavLink>
+              </li>
+              <li className="relative">
+                <div className="flex items-center cursor-pointer">
+                  <NavLink
+                    to="/categories"
+                    className={({ isActive }) =>
+                      isActive ? "text-red-800 mr-1" : "text-[#212529] mr-1"
+                    }
+                  >
+                    Categories
+                  </NavLink>
+                  <FaChevronDown
+                    className="ml-1 cursor-pointer text-[#212529] h-3 w-3 sm:h-4 sm:w-4"
+                    onClick={toggleDropdown}
+                  />
                 </div>
-              )}
-            </li>
-            <li>
-              <NavLink
-                to="/contact"
-                className={({ isActive }) =>
-                  isActive ? "text-blue-500" : "text-gray-500"
-                }
-              >
-                Contact
-              </NavLink>
-            </li>
-          </ul>
+                {isDropdownOpen && (
+                  <div className="absolute bg-white text-[#212529] p-2 rounded shadow-lg z-10 right-0 sm:right-auto">
+                    <ul className="space-y-1 sm:space-y-2 text-sm sm:text-base">
+                      {Categories.map((category) => (
+                        <li key={category.id}>
+                          <button
+                            onClick={() => handleCategoryClick(category.id)}
+                            className="hover:text-red-800 transition-colors whitespace-nowrap"
+                          >
+                            {category.name}
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </li>
+              <li>
+                <NavLink
+                  to="/contact"
+                  className={({ isActive }) =>
+                    isActive ? "text-red-800" : "text-[#212529]"
+                  }
+                >
+                  Contact
+                </NavLink>
+              </li>
+            </ul>
+          </div>
         </nav>
       </div>
       {isSidebarOpen && <Sidebar toggleSidebar={toggleSidebar} />}
-    </div>
+    </header>
   );
 };
 
