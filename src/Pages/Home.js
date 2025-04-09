@@ -1,12 +1,16 @@
 import "../CSS/output.css";
-import Image from "../Images/profile.jpeg";
+
 import JourneyImage from "../Images/journey.jpg";
 import LearningImage from "../Images/learning.jpg";
 import ProjectImage from "../Images/project.jpg";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState("");
+
   const [cards, setCards] = useState([
     {
       title: "My First Coding Project",
@@ -24,7 +28,6 @@ const Home = () => {
         "https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
       link: "/blog/learning-react",
     },
-
     {
       title: "Building My Portfolio",
       excerpt:
@@ -52,9 +55,17 @@ const Home = () => {
   ]);
 
   const [categories, setCategories] = useState([
-    { name: "Personal Journey", link: "#", image: JourneyImage },
-    { name: "Learning Resources", link: "#", image: LearningImage },
-    { name: "Project", link: "#", image: ProjectImage },
+    {
+      name: "Personal Journey",
+      link: "/categories#section-1",
+      image: JourneyImage,
+    },
+    {
+      name: "Learning Resources",
+      link: "/categories#section-2",
+      image: LearningImage,
+    },
+    { name: "Project", link: "/categories#section-3", image: ProjectImage },
   ]);
 
   const [featuredPost, setFeaturedPost] = useState([
@@ -83,18 +94,24 @@ const Home = () => {
       link: "/categories#section-1",
     },
   ]);
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchTerm) {
+      navigate(`/search-results?query=${encodeURIComponent(searchTerm)}`);
+    }
+  };
 
   return (
     <div className="pt-16">
       <div className="hero min-h-screen bg-gradient-to-b from-[#F8F9FA] to-white">
-        <section className="bg-gradient-to-b from-[#F8F9FA] to-white text-[#212529] py-10 md:py-20 px-4 md:px-6 text-center">
-          <h1 className="text-3xl md:text-5xl font-bold mb-4 text-[#212529]">
+        <section className="bg-gradient-to-r from-red-800 to-red-900 text-white py-10 md:py-20 px-4 md:px-6 text-center">
+          <h1 className="text-3xl md:text-5xl font-bold mb-4 ">
             Hi, I'm Abigail 👋
           </h1>
-          <p className="mb-4 md:mb-6 text-xl md:text-2xl text-[#495057]">
+          <p className="mb-4 md:mb-6 text-xl md:text-2xl ">
             A software engineering student & lifestyle blogger in the making.
           </p>
-          <div className="text-lg md:text-xl text-[#495057] max-w-6xl mx-auto">
+          <div className="text-lg md:text-xl max-w-6xl mx-auto">
             <p>
               Welcome to my space on the internet! I'm Abigail Getachew — a
               software engineering student, faith-driven dreamer, and someone
@@ -103,12 +120,12 @@ const Home = () => {
               my everyday life, and reflections from my heart. It's still under
               construction, but I'm excited to take you along as I grow.
               <br />
-              <span className="mt-3 md:mt-5 p-2 md:p-3 font-semibold text-[#212529] block">
+              <span className="mt-3 md:mt-5 p-2 md:p-3 font-semibold block">
                 "This blog is just getting started — but so is my story."
               </span>
             </p>
           </div>
-          <button className="mt-4 md:mt-6 bg-gradient-to-r from-red-800 to-red-900 text-white py-2 px-4 md:px-6 rounded-lg hover:from-red-900 hover:to-red-800 transition-all duration-300 shadow-md text-base md:text-lg">
+          <button className="mt-4 md:mt-6 bg-[#f5f5f7] to-[white] text-red-800 py-2 px-4 md:px-6 rounded-lg hover:from-red-900 hover:to-red-800 transition-all duration-300 shadow-md text-base md:text-lg">
             Join Me on This Journey
           </button>
         </section>
@@ -117,12 +134,16 @@ const Home = () => {
           {/* Left Column */}
           <div className="flex flex-col w-full md:w-1/4">
             <div className="relative w-full mb-4">
-              <input
-                type="text"
-                placeholder="Search..."
-                className="w-full border border-[#DEE2E6] rounded-md py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-red-800 focus:border-red-800"
-              />
-              <MagnifyingGlassIcon className="h-5 w-5 text-[#ADB5BD] absolute left-3 top-1/2 transform -translate-y-1/2" />
+              <form onSubmit={handleSearch}>
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full border border-[#DEE2E6] rounded-md py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-red-800 focus:border-red-800"
+                />
+                <MagnifyingGlassIcon className="h-5 w-5 text-[#ADB5BD] absolute left-3 top-1/2 transform -translate-y-1/2" />
+              </form>
             </div>
 
             <div className="categories mb-8 md:mb-10">

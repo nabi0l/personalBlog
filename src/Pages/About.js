@@ -6,7 +6,7 @@ const About = () => {
   return (
     <div className="min-h-screen bg-[#f5f5f7] text-[#212529] py-10 md:py-14 px-4 md:px-6 pt-16 sm:pt-20 md:pt-24">
       <section className="text-center mb-8 md:mb-12 mt-8 sm:mt-12">
-        <h1 className="text-3xl md:text-4xl font-bold mb-3 md:mb-4">
+        <h1 className="text-3xl md:text-4xl font-bold mb-3 md:mb-4 text-red-800">
           About Me
         </h1>
         <p className="text-lg md:text-xl mb-4 md:mb-6">
@@ -16,7 +16,7 @@ const About = () => {
 
       {/* Your Story */}
       <section className="mb-8 md:mb-12">
-        <h2 className="text-2xl md:text-3xl font-semibold mb-3 md:mb-4 text-left">
+        <h2 className="text-2xl md:text-3xl font-semibold mb-3 md:mb-4 text-justify text-red-800">
           My Story
         </h2>
         <p className="text-base md:text-lg text-left px-4 md:px-8">
@@ -38,7 +38,7 @@ const About = () => {
 
       {/* Mission Statement */}
       <section className="mb-8 md:mb-12">
-        <h2 className="text-2xl md:text-3xl font-semibold mb-3 md:mb-4 text-left">
+        <h2 className="text-2xl md:text-3xl font-semibold mb-3 md:mb-4 text-justify text-red-800">
           Mission
         </h2>
         <p className="text-base md:text-lg text-left px-4 md:px-8">
@@ -56,7 +56,7 @@ const About = () => {
 
       {/* Fun Facts */}
       <section className="mb-8 md:mb-12">
-        <h2 className="text-2xl md:text-3xl font-semibold mb-3 md:mb-4 text-left">
+        <h2 className="text-2xl md:text-3xl font-semibold mb-3 md:mb-4 text-justify text-red-800">
           Fun Facts
         </h2>
         <ul className="list-disc list-inside text-base md:text-lg text-left px-4 md:px-8 space-y-2">
@@ -87,7 +87,7 @@ const About = () => {
         <img
           src={Image} // Replace with the path to your photo
           alt="Abigail"
-          className="w-32 h-32 md:w-48 md:h-48 rounded-full mx-auto shadow-lg"
+          className="w-32 h-32 md:w-48 md:h-48 rounded-full mx-auto shadow-lg border-2 border-red-800"
         />
       </section>
     </div>

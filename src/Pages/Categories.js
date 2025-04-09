@@ -4,15 +4,55 @@ import proj2 from "../Assets/proj2.png";
 import proj3 from "../Assets/proj3.png";
 import proj4 from "../Assets/proj4.png";
 import proj5 from "../Assets/proj5.png";
+import {
+  BookOpenIcon,
+  RocketLaunchIcon,
+  AcademicCapIcon,
+} from "@heroicons/react/24/outline";
 
 import { useState, useEffect } from "react";
-import Swiper from "swiper/bundle"; // Bundle includes everything needed
-import "swiper/css/bundle"; // Correct CSS import
+import Swiper from "swiper/bundle";
+import "swiper/css/bundle";
 
 const ProjectsSlider = () => {
+  const projects = [
+    {
+      id: 1,
+      name: "Quiz App",
+      description:
+        "A quiz app that allows users to take quizzes and see their results",
+      image: proj1,
+    },
+    {
+      id: 2,
+      name: "Clone of University of Gondar Website",
+      description:
+        "A clone of the University of Gondar website using HTML, CSS and Js.",
+      image: proj2,
+    },
+    {
+      id: 3,
+      name: "Clone of Apple website",
+      description: "A clone of the apple website using HTML,CSS and Bootstrap",
+      image: proj3,
+    },
+    {
+      id: 4,
+      name: "E-learning Platform",
+      description: "An e-Learning platform using HTML, CSS and Js.",
+      image: proj4,
+    },
+    {
+      id: 5,
+      name: "Movie Website",
+      description: "A movie website using HTML , CSS, JS and PHP.",
+      image: proj5,
+    },
+  ];
+
   useEffect(() => {
     const swiper = new Swiper(".swiper-container", {
-      slidesPerView: 2,
+      slidesPerView: 1,
       spaceBetween: 30,
       navigation: {
         nextEl: ".swiper-button-next",
@@ -22,227 +62,249 @@ const ProjectsSlider = () => {
         el: ".swiper-pagination",
         clickable: true,
       },
-      slidesPerGroup: 2,
       breakpoints: {
-        // when window width is >= 320px
-        320: {
+        640: {
           slidesPerView: 2,
-          spaceBetween: 20,
         },
-        // when window width is >= 480px
-        480: {
-          slidesPerView: 2,
-          spaceBetween: 30,
+        1024: {
+          slidesPerView: 3,
         },
       },
     });
 
-    return () => swiper.destroy(); // Cleanup
+    return () => swiper.destroy();
   }, []);
 
   return (
-    <div className="relative w-full max-w-[1000px] mx-auto px-20">
-      <div className="swiper-button-prev !text-white absolute -left-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 rounded-full p-4 hover:bg-black/70 transition-colors"></div>
-      <div className="swiper-container mt-8 overflow-hidden">
+    <div className="relative w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="swiper-button-prev !text-white absolute -left-12 top-1/2 -translate-y-1/2 z-10 bg-red-800/50 rounded-full p-4 hover:bg-red-800/70 transition-colors"></div>
+      <div className="swiper-container mt-8 overflow-hidden px-8">
         <div className="swiper-wrapper">
-          <div className="swiper-slide" style={{ height: "300px" }}>
-            <img
-              src={proj1}
-              alt="Project 1"
-              className="w-full h-full object-contain"
-            />
-          </div>
-          <div className="swiper-slide" style={{ height: "300px" }}>
-            <img
-              src={proj2}
-              alt="Project 2"
-              className="w-full h-full object-contain"
-            />
-          </div>
-          <div className="swiper-slide" style={{ height: "300px" }}>
-            <img
-              src={proj3}
-              alt="Project 3"
-              className="w-full h-full object-contain"
-            />
-          </div>
-          <div className="swiper-slide" style={{ height: "300px" }}>
-            <img
-              src={proj4}
-              alt="Project 4"
-              className="w-full h-full object-contain"
-            />
-          </div>
-          <div className="swiper-slide" style={{ height: "300px" }}>
-            <img
-              src={proj5}
-              alt="Project 5"
-              className="w-full h-full object-contain"
-            />
-          </div>
+          {projects.map((project) => (
+            <div key={project.id} className="swiper-slide px-4">
+              <div className="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 w-[400px] mb-8">
+                <div className="w-full h-64 sm:h-80">
+                  <img
+                    src={project.image}
+                    alt={project.name}
+                    className="w-full h-full object-cover "
+                  />
+                </div>
+                <div className="p-4 mt-4">
+                  <h3 className="text-lg font-semibold text-[#212529] mb-2">
+                    {project.name}
+                  </h3>
+                  <p className="text-[#495057] text-sm">
+                    {project.description}
+                  </p>
+                  {/* <div className="mt-4 flex justify-end">
+                    <a
+                      href={`#project-${project.id}`}
+                      className="text-red-800 hover:text-red-900 font-medium text-sm flex items-center gap-1"
+                    >
+                      Learn More
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-4 w-4"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </a>
+                  </div> */}
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
         <div className="swiper-pagination mt-4"></div>
       </div>
-      <div className="swiper-button-next !text-white absolute -right-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 rounded-full p-4 hover:bg-black/70 transition-colors"></div>
+      <div className="swiper-button-next !text-white absolute -right-12 top-1/2 -translate-y-1/2 z-10 bg-red-800/50 rounded-full p-4 hover:bg-red-800/70 transition-colors"></div>
     </div>
   );
 };
 
 const Categories = () => {
   const [categories] = useState([
-    { name: "My Personal Journey", id: 1 },
-    { name: "Learning Resources", id: 2 },
-    { name: "My Projects", id: 3 },
+    {
+      name: "My Personal Journey",
+      id: 1,
+      icon: RocketLaunchIcon,
+      color: "bg-red-100",
+    },
+    {
+      name: "Learning Resources",
+      id: 2,
+      icon: BookOpenIcon,
+      color: "bg-blue-100",
+    },
+    {
+      name: "My Projects",
+      id: 3,
+      icon: AcademicCapIcon,
+      color: "bg-green-100",
+    },
   ]);
 
   useEffect(() => {
-    // Get the hash from the URL
     const hash = window.location.hash;
     if (hash) {
-      // Extract the section ID from the hash
       const sectionId = hash.replace("#section-", "");
-      // Find the section element
       const section = document.getElementById(`section-${sectionId}`);
       if (section) {
-        // Scroll to the section
         section.scrollIntoView({ behavior: "smooth" });
       }
     }
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#f5f5f7] text-[#212529] py-10 md:py-14 px-4 md:px-6 pt-16 sm:pt-20 md:pt-24">
-      {categories.map((category) => (
-        <div
-          key={category.id}
-          id={`section-${category.id}`}
-          className="category mb-8 md:mb-10 scroll-mt-20 mt-8 sm:mt-12"
-        >
-          <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 p-2 md:p-3">
-            {category.name}
-          </h2>
-
-          <div className="personal text-left text-base md:text-lg">
-            {category.id === 1 && (
-              <>
-                <p className="mb-3 md:mb-4">
-                  This is a personal note about my journey as a software
-                  engineering student and lifestyle blogger. Growing up, I
-                  always had a fascination with technology. I would spend hours
-                  tinkering with computers, trying to understand how they
-                  worked. This curiosity eventually led me to pursue a degree in
-                  software engineering.
-                </p>
-                <p className="mb-3 md:mb-4">
-                  The path hasn't been easy. There have been moments of
-                  self-doubt and challenges that made me question my abilities.
-                  From struggling with complex coding concepts to balancing my
-                  studies with personal life, I've faced my fair share of
-                  obstacles. But each challenge has taught me valuable lessons
-                  about resilience and perseverance.
-                </p>
-                <p className="mb-3 md:mb-4">
-                  One of the most rewarding experiences has been collaborating
-                  with peers on projects. Working together to solve problems and
-                  build applications has not only enhanced my technical skills
-                  but also helped me develop strong friendships. I've learned
-                  the importance of teamwork and communication in the tech
-                  industry.
-                </p>
-                <p className="mb-3 md:mb-4">
-                  Beyond academics, I've also discovered the importance of
-                  self-care and maintaining a balanced lifestyle. As a
-                  faith-driven individual, I find strength and motivation in my
-                  beliefs, which guide me through tough times. Whether it's
-                  taking time to meditate, go for a walk, or spend time with
-                  loved ones, I've realized that taking care of my mental health
-                  is crucial for my success.
-                </p>
-                <p className="mb-3 md:mb-4">
-                  As I continue this journey, I'm excited to share my
-                  experiences, insights, and the lessons I learn along the way.
-                  This blog is a space for reflection, growth, and connection. I
-                  hope to inspire others who may be on a similar path and foster
-                  a community of support and encouragement.
-                </p>
-                <p className="font-semibold mt-4 md:mt-5 text-center text-lg md:text-xl">
-                  "Every step I take is a part of my story, and I'm grateful for
-                  the journey."
-                </p>
-              </>
-            )}
-          </div>
-
-          <div className="learning text-left text-base md:text-lg">
-            {category.id === 2 && (
-              <>
-                <p className="mb-3 md:mb-4">
-                  This is a collection of learning resources related to my
-                  personal journey in software engineering. As I navigate
-                  through my studies, I've discovered numerous tools and
-                  resources that have significantly enhanced my understanding of
-                  various concepts.
-                </p>
-                <p className="mb-3 md:mb-4">
-                  One of the first resources I turned to was online learning
-                  platforms like <strong>Coursera</strong> and{" "}
-                  <strong>edX</strong>. These platforms offer a wide range of
-                  courses from top universities and industry leaders. I found
-                  courses on programming languages such as Python and Java, as
-                  well as specialized topics like web development and data
-                  science.
-                </p>
-                <p className="mb-3 md:mb-4">
-                  Additionally, I'm a huge fan of <strong>YouTube</strong>{" "}
-                  tutorials. Channels like <strong>Traversy Media</strong> and{" "}
-                  <strong>Academind </strong>
-                  provide fantastic explanations and practical coding examples
-                  that have helped me grasp complex topics. I often refer back
-                  to these videos when I need a refresher or a different
-                  perspective on a subject.
-                </p>
-                <p className="mb-3 md:mb-4">
-                  I also believe in the power of community learning.
-                  Participating in coding boot camps and local meetups has
-                  allowed me to connect with fellow learners and professionals
-                  in the field. These interactions have not only provided me
-                  with valuable insights but have also motivated me to push my
-                  boundaries and challenge myself.
-                </p>
-                <p className="mb-3 md:mb-4">
-                  To keep my skills sharp, I've started working on personal
-                  projects and contributing to open-source initiatives on
-                  platforms like <strong>GitHub</strong>. This hands-on
-                  experience has been invaluable in applying what I've learned
-                  and understanding real-world applications of coding concepts.
-                </p>
-                <p className="mb-3 md:mb-4">
-                  As I continue to grow, I'm excited to share more resources
-                  that I discover along the way. Whether it's a new book, a
-                  helpful website, or a coding challenge, I believe that sharing
-                  knowledge is essential for our collective growth.
-                </p>
-                <p className="font-semibold mt-4 md:mt-5 text-lg md:text-xl text-center">
-                  "Learning is a lifelong journey, and I'm grateful for every
-                  resource and experience that shapes my path."
-                </p>
-              </>
-            )}
-          </div>
-
-          {category.id === 3 && (
-            <div className="projects-section mt-8 md:mt-12">
-              <p className="mb-4 text-base md:text-lg">
-                This is a list of projects I've worked on during my personal
-                journey.
-              </p>
-              <div className="overflow-x-auto">
-                <ProjectsSlider />
-              </div>
-            </div>
-          )}
+    <div className="min-h-screen bg-[#f5f5f7] text-[#212529]">
+      {/* Hero Section */}
+      <div className="bg-gradient-to-r from-red-800 to-red-900 text-white py-20 px-4 sm:px-6 lg:px-8 mt-16">
+        <div className="max-w-7xl mx-auto text-center">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
+            Explore My Journey
+          </h1>
+          <p className="text-xl sm:text-2xl text-red-100 max-w-3xl mx-auto">
+            Discover my experiences, resources, and projects in software
+            engineering
+          </p>
         </div>
-      ))}
+      </div>
+
+      {/* Categories Content */}
+      <div className=" mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {categories.map((category) => (
+          <div
+            key={category.id}
+            id={`section-${category.id}`}
+            className="category mb-16 scroll-mt-20"
+          >
+            <div className="flex items-center gap-4 mb-8">
+              <div className={`${category.color} p-3 rounded-lg`}>
+                <category.icon className="w-8 h-8 text-red-800" />
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-[#212529]">
+                {category.name}
+              </h2>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8 transform hover:shadow-xl transition-shadow duration-300">
+              {category.id === 1 && (
+                <div className="space-y-6">
+                  <div className="prose max-w-none">
+                    <p className="text-lg text-justify text-[#495057]">
+                      As a software engineering student, my journey into the
+                      world of technology has been both challenging and
+                      rewarding. Here, I share my personal experiences, the ups
+                      and downs, and the valuable lessons I've learned along the
+                      way.
+                    </p>
+                    <p className="text-lg text-justify text-[#495057]">
+                      From my first "Hello, World!" to building full-stack
+                      applications, every step has contributed to my growth as a
+                      developer. I believe in the power of sharing experiences
+                      to help others navigate their own tech journeys.
+                    </p>
+                  </div>
+                  <div className="mt-8">
+                    <h3 className="text-2xl font-semibold mb-6 text-[#212529]">
+                      Key Milestones in My Journey
+                    </h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {[
+                        "Starting My Coding Journey",
+                        "First Programming Language",
+                        "First Project Success",
+                        "Overcoming Imposter Syndrome",
+                      ].map((milestone, index) => (
+                        <a
+                          key={index}
+                          href="#section-1"
+                          className="block p-4 bg-red-50 rounded-lg hover:bg-red-100 transition-colors duration-300"
+                        >
+                          <span className="text-red-800 font-medium">
+                            {milestone}
+                          </span>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {category.id === 2 && (
+                <div className="space-y-6">
+                  <div className="prose max-w-none">
+                    <p className="text-lg text-justify text-[#495057]">
+                      Learning to code is an ongoing journey, and having the
+                      right resources can make all the difference. In this
+                      section, I share the tools, tutorials, and learning
+                      materials that have helped me along the way.
+                    </p>
+                    <p className="text-lg text-justify text-[#495057]">
+                      Whether you're just starting out or looking to expand your
+                      skills, these resources can provide valuable guidance and
+                      knowledge to support your learning journey.
+                    </p>
+                  </div>
+                  <div className="mt-8">
+                    <h3 className="text-2xl font-semibold mb-6 text-[#212529]">
+                      Recommended Learning Resources
+                    </h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {[
+                        "Online Courses and Tutorials",
+                        "Books for Developers",
+                        "YouTube Channels and Podcasts",
+                        "Coding Challenges and Practice Sites",
+                      ].map((resource, index) => (
+                        <a
+                          key={index}
+                          href="#section-2"
+                          className="block p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-300"
+                        >
+                          <span className="text-blue-800 font-medium">
+                            {resource}
+                          </span>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {category.id === 3 && (
+                <div className="space-y-6">
+                  <div className="prose max-w-none">
+                    <p className="text-lg text-justify text-[#495057]">
+                      Projects are where theory meets practice. In this section,
+                      I showcase the projects I've worked on, the challenges
+                      I've faced, and the solutions I've implemented.
+                    </p>
+                    <p className="text-lg text-justify text-[#495057]">
+                      From simple applications to more complex systems, each
+                      project represents a step in my learning journey and an
+                      opportunity to apply my skills in real-world scenarios.
+                    </p>
+                  </div>
+                  <div className="mt-8">
+                    <h3 className="text-2xl font-semibold mb-6 text-[#212529]">
+                      Featured Projects
+                    </h3>
+                    <ProjectsSlider />
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

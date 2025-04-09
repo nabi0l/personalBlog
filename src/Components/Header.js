@@ -150,6 +150,16 @@ const Header = () => {
               </li>
               <li>
                 <NavLink
+                  to="/search"
+                  className={({ isActive }) =>
+                    isActive ? "text-red-800" : "text-[#212529]"
+                  }
+                >
+                  Search
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
                   to="/contact"
                   className={({ isActive }) =>
                     isActive ? "text-red-800" : "text-[#212529]"
